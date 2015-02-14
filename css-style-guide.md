@@ -1,3 +1,5 @@
+# CSS Style Guide
+
 The following document outlines a style guide for CSS and Sass stylesheets.
 
 # Whitespace

@@ -1,3 +1,7 @@
+# JavaScript Style Guide
+
+The following document outlines a style guide for JavaScript programs.
+
 # Prelude
 
 StoryCloud's JavaScript Style Guide extends Douglas Crockford's

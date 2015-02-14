@@ -1,3 +1,7 @@
+# HTML Style Guide
+
+The following document outlines a style guide for HTML pages and templates.
+
 # Tags
 
 - Don't include a trailing slash in self-closing elements (e.g. `<br>`, not `<br />`).
