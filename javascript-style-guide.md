@@ -81,6 +81,9 @@ When talking about millisecond values since the Unix epoch, suffix names with
 When naming predicate values or functions, prefix names with "is". e.g.,
 `isReady`, `isAvailable()`.
 
+Functions which return objects shoud be prefixed with "make". e.g.,
+`makeMammal()`, `makeCat()`.
+
 # Syntax
 
 ## Variables
@@ -173,18 +176,10 @@ Prefer iterating through own properties over `for in` loops.
 Because tail calls are not yet widely implemented, use `while` and `do` for
 algorithms that might grow the call stack boundlessly.
 
-If Lodash is available, prefer its implementations of the aggregate functions
-over the ones from `Array.prototype`. Also prefer utilities like `_.keys`,
-`_.isArray`, etc, over the built-ins, as Lodash implementations sometimes fix
-compatibility issues.
-
 Aggregate operations provide forms for iterating over collections that are more
 precise and oftentimes more useful than their procedural alternatives.
 
 ## Object-orientation
-
-Functional and object-oriented programming aren't mutually
-exclusive. Object-orientation and classicism aren't bounded.
 
 You can leverage object-oriented design patterns such as encapsulation,
 composition, and inheritance in JavaScript. Create functions whose instance
@@ -236,13 +231,11 @@ var myCat = makeCat({name: 'Henrietta'});
 
 ## Existence
 
-JavaScript has a concept of "truthiness" and "falsiness," where certain values
-are coerced to boolean values to satisfy predicates. It makes sense that
-`false`, `undefined` and `null` are falsy, but unfortunately, so are `''` and
-`0`. Sometimes (perhaps more often than not) empty strings and zero are "valid"
-values from a business perspective. Thus, when checking for the "existence" of a
-value, it is unreliable to rely on truthiness. Instead, you should explicitly
-check for negative values.
+In JavaScript, the values `false`, `undefined` and `null` are falsy, but so are
+`''` and `0`. This is unfortunate, because sometimes empty strings and zero are
+"valid" values from a business perspective. Therefore, when checking for the
+"existence" of a value, it is unreliable to rely on truthiness or
+falsiness. Instead, you should explicitly check for negative values.
 
 Do:
 
@@ -265,7 +258,7 @@ if (number) {
 ## Simplicity
 
 It's possible to do lots of things on one line. But that can make your code
-confusing. You should try to do just one thing per line.
+complex and confusing. You should try to do just one thing per line.
 
 Do:
 
@@ -282,11 +275,12 @@ value = array[index++];
 
 ## Abstraction
 
-It's possible to make implications. For instance, the value returned from
-`indexOf` can be used to test for the existence of substrings or elements. But
-it is better to abstract away implications so you can think about the actual
-problem at hand. Therefore, a `contains` function would be better for checking
-existence than `indexOf`.
+Abstract away complex or roundabout routines to make your intent obvious.
+
+For instance, some people use the value returned from `indexOf` to test for the
+existence of substrings or elements. But it would be better to abstract that
+implication into a `contains` function, as you probably care about existence,
+not indices.
 
 Do:
 
