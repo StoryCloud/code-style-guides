@@ -17,7 +17,7 @@ The following document outlines a style guide for JavaScript programs.
 - Don't be tricky.
 - Do be explicit.
 
-# Formatting
+## Formatting
 
 Configure your text editor to manage the following whitespace rules:
 
@@ -36,9 +36,9 @@ the style guide. You can also use our projects' Grunt or Gulp interfaces.
 [Code Conventions for the JavaScript Programming Language]: http://javascript.crockford.com/code.html
 [Editorconfig]: http://editorconfig.org/#download
 
-# English
+## English
 
-## Spelling
+### Spelling
 
 Use real words for identifiers.
 
@@ -47,7 +47,7 @@ or "e".
 
 Ubiquitous acronyms such as "http" and "url" are permissible.
 
-## Capitalization
+### Capitalization
 
 Capitalize only the first letter of words in identifiers.
 
@@ -55,15 +55,15 @@ For instance, a phrase such as "File Transfer URI", which contains a
 normally-capitalized acronym, has the identifier `fileTransferUri` (as opposed
 to something like `fileTransferURI`).
 
-## Word choice
+### Word choice
 
 Prefer descriptiveness, then brevity. Strive for clarity; avoid ambiguity.
 
 Functions are verbs, everything else should be nouns.
 
-# Syntax
+## Syntax
 
-## Variables
+### Variables
 
 If ECMAScript 6 features are available, prefer `const`. Use `let` only when the
 value needs to change.
@@ -71,7 +71,7 @@ value needs to change.
 `const` and `let` variables should be defined separately, and close to their
 site of first use. `var` statements should be placed at the top of a function.
 
-# Quality
+## Quality
 
 Use JSHint to validate the quality of your code and check for errors.
 
@@ -79,9 +79,9 @@ It is highly recommended that you integrate JSHint into your editor, or switch
 to an editor that offers integration. Real-time error reporting can make you
 more productive by pointing out syntactic and logical errors before runtime.
 
-# Style
+## Style
 
-## Functionalism
+### Functionalism
 
 Prefer `forEach`, `map`, `filter` and `reduce` over `for` loops.
 
@@ -95,7 +95,7 @@ algorithms that might grow the call stack boundlessly.
 Aggregate operations provide forms for iterating over collections that are more
 precise and oftentimes more useful than their procedural alternatives.
 
-## Object-orientation
+### Object-orientation
 
 You can leverage object-oriented design patterns such as encapsulation,
 composition, and inheritance in JavaScript. Create functions whose instance
@@ -145,7 +145,7 @@ var makeCat = function (data) {
 var myCat = makeCat({name: 'Henrietta'});
 ```
 
-## Existence
+### Existence
 
 In JavaScript, the values `false`, `undefined`, `null` and `NaN` are falsy, but
 so are `''` and `0`. This is unfortunate, because sometimes empty strings and
@@ -171,7 +171,7 @@ if (number) {
 }
 ```
 
-## Simplicity
+### Simplicity
 
 It's possible to do lots of things on one line. But that can make your code
 complex and confusing. You should try to do just one thing per line.
@@ -189,7 +189,7 @@ Don't:
 value = array[index++];
 ```
 
-## Abstraction
+### Abstraction
 
 Abstract away complex or roundabout routines to make your intent obvious.
 
@@ -220,7 +220,7 @@ if (!isNaN(parseInt(value, 10))) {
 }
 ```
 
-# Credits
+## Credits
 
 Influenced by:
 
