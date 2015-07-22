@@ -22,7 +22,7 @@ it.
   - Our Node.js servers utilize some ECMAScript 6 features. Feel free to use
     those features in that environment, if the code is unlikely to be ported
     elsewhere.
-- Place `'use strict';` at the top of functions.
+- Place `'use strict';` at the top of scripts or functions.
 - Don't be tricky.
 - Do be explicit.
 
