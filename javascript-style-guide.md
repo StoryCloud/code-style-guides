@@ -181,9 +181,60 @@ compatibility issues.
 Aggregate operations provide forms for iterating over collections that are more
 precise and oftentimes more useful than their procedural alternatives.
 
-## Explicitness
+## Object-orientation
 
-### Existence
+Functional and object-oriented programming aren't mutually
+exclusive. Object-orientation and classicism aren't bounded.
+
+You can leverage object-oriented design patterns such as encapsulation,
+composition, and inheritance in JavaScript. Create functions whose instance
+variables represent private and protected members. From these functions, return
+objects with methods to access and possibly manipulate the instance
+variables. Create functions with extended interfaces that mutate instances of
+their parents to effect inheritance.
+
+Example:
+
+```js
+var makeMammal = function (data) {
+    var self = {};
+    self.getName = function () {
+        return data.name;
+    };
+    self.says = function () {
+        return data.saying === undefined ? '' : data.saying;
+    };
+    return self;
+};
+
+var myMammal = makeMammal({name: 'Herb'});
+
+var makeCat = function (data) {
+    var self;
+    data.saying = data.saying === undefined ? 'meow' : data.saying;
+    self = makeMammal(data);
+    self.purr = function (n) {
+        var message = '',
+            index;
+        for (index = 0; index < n; index += 1) {
+            if (message.length > 0) {
+                message += '-';
+            }
+            message += 'r';
+        }
+        return message;
+    };
+    self.getName = function () {
+        return self.says() + ' ' + data.name +
+            ' ' + self.says();
+    };
+    return self;
+};
+
+var myCat = makeCat({name: 'Henrietta'});
+```
+
+## Existence
 
 JavaScript has a concept of "truthiness" and "falsiness", where certain values
 are coerced to boolean values to satisfy predicates. It makes sense that
@@ -211,7 +262,7 @@ if (number) {
 }
 ```
 
-### Simplicity
+## Simplicity
 
 It's possible to do lots of things on one line. But that can make your code
 confusing. You should try to do just one thing per line.
@@ -229,7 +280,7 @@ Don't:
 value = array[index++];
 ```
 
-### Abstraction
+## Abstraction
 
 It's possible to make implications. For instance, the value returned from
 `indexOf` can be used to test for the existence of substrings or elements. But
