@@ -4,7 +4,7 @@ The following document outlines a style guide for HTML pages and templates.
 
 # Tags
 
-- Don't include a trailing slash in self-closing elements (e.g. `<br>`, not `<br />`).
+- Always include a trailing slash in self-closing elements (e.g. `<br/>`, not `<br>`).
 - Don't omit optional closing tags (e.g. `</li>` or `</body>`).
 
 # Quotes
@@ -40,6 +40,10 @@ Aligned:
     Link Text
 </a>
 ```
+
+# Identification
+
+- Use `class` for identifying elements. Don't use `id`.
 
 # Reducing markup
 
