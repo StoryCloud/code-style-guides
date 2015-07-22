@@ -91,12 +91,10 @@ Functions which return objects shoud be prefixed with "make". e.g.,
 If ECMAScript 6 features are available, prefer `const`. Use `let` only when the
 value needs to change.
 
-Thanks to block scope and temporal dead zones, `const` and `let` variables need
-not be defined at the top of a function, nor in single, comma-delimited
-statements. In fact, they should be defined separately, and close to their site
-of first use.
+`const` and `let` variables should be defined separately, and close to their
+site of first use.
 
-Otherwise, refer to Code Conventions.
+`var` statements should be placed at the top of a function.
 
 ## Functions
 
