@@ -236,13 +236,13 @@ var myCat = makeCat({name: 'Henrietta'});
 
 ## Existence
 
-JavaScript has a concept of "truthiness" and "falsiness", where certain values
+JavaScript has a concept of "truthiness" and "falsiness," where certain values
 are coerced to boolean values to satisfy predicates. It makes sense that
-`false`, `undefined` and `null` are falsy, but unfortunately, `''` and `0` also
-fall under this category. Sometimes (perhaps more often than not) empty strings
-and zero are "valid" values from a business perspective. Thus, when checking for
-the "existence" of a value, it unreliable to rely on truthiness. Instead, you
-should explicitly check for negatives.
+`false`, `undefined` and `null` are falsy, but unfortunately, so are `''` and
+`0`. Sometimes (perhaps more often than not) empty strings and zero are "valid"
+values from a business perspective. Thus, when checking for the "existence" of a
+value, it is unreliable to rely on truthiness. Instead, you should explicitly
+check for negative values.
 
 Do:
 
