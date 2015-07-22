@@ -132,16 +132,6 @@ Example:
 
 ## Exceptions and slight deviations
 
-Large blocks of single declarations can use a slightly different, single-line
-format. In this case, a space should be included after the opening brace and
-before the closing brace.
-
-```scss
-.selector-1 { width: 10%; }
-.selector-2 { width: 20%; }
-.selector-3 { width: 30%; }
-```
-
 Long, comma-separated property values - such as collections of gradients or
 shadows - can be arranged across multiple lines in an effort to improve
 readability and produce more useful diffs.
@@ -247,11 +237,21 @@ An example of various conventions.
 
 // Cell dimensions
 
-.cell-1 { width: 10%; }
-.cell-2 { width: 20%; }
-.cell-3 { width: 30%; }
-.cell-4 { width: 40%; }
-.cell-5 { width: 50%; }
+.cell-1 {
+    width: 10%;
+}
+.cell-2 {
+    width: 20%;
+}
+.cell-3 {
+    width: 30%;
+}
+.cell-4 {
+    width: 40%;
+}
+.cell-5 {
+    width: 50%;
+}
 
 // Cell modifiers
 
