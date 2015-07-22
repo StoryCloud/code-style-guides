@@ -69,66 +69,7 @@ If ECMAScript 6 features are available, prefer `const`. Use `let` only when the
 value needs to change.
 
 `const` and `let` variables should be defined separately, and close to their
-site of first use.
-
-`var` statements should be placed at the top of a function.
-
-## Functions
-
-Use [function expressions][]. Do not use [function declarations][].
-
-[function expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function
-[function declarations]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function
-
-Do:
-
-```js
-var procedure = function () {
-    // Function body...
-};
-```
-
-Don't:
-
-```js
-function procedure() {
-    // Function body...
-}
-```
-
-Function expressions are more versatile than function declarations.
-
-Like `var` statements, function declarations also "hoist" a variable in the
-enclosing function's scope, which can result in errors not obvious to the
-talented, casual observer. But unlike function declarations, `var` statements
-can at least be consolidated at the beginning of functions in a self-enforcing
-clarifying fashion.
-
-In code that uses ECMAScript 6 features, we can instead bind functions with
-`const` and avoid hoisting (and reassignment) altogether.
-
-## Strings
-
-Use single quotes (`'`) for string literals.
-
-Use string concatenation. Do not use "multiline strings".
-
-Do:
-
-```js
-var a = 'The quick brown fox ' +
-        'jumps over the lazy dog';
-```
-
-Don't:
-
-```js
-var a = 'The quick brown fox \
-jumps over the lazy dog.'
-```
-
-Multiline strings are harmful because a trailing space following the escaping
-`\` will result in a syntax error invisible to the human eye.
+site of first use. `var` statements should be placed at the top of a function.
 
 # Quality
 
