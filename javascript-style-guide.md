@@ -45,16 +45,6 @@ Use real words for identifiers.
 For instance, "element" is best written as "element", not "el", "elm", "elem",
 or "e".
 
-For your convenience, the following words also have a preferred spelling:
-
-Word      | Best written as | Known to be written as
-----------|-----------------|-----------------------
-directory | directory       | dir
-error     | error           | err, e
-index     | index           | idx, i
-request   | request         | req
-response  | response        | res
-
 Ubiquitous acronyms such as "http" and "url" are permissible.
 
 ## Capitalization
@@ -67,19 +57,9 @@ to something like `fileTransferURI`).
 
 ## Word choice
 
-Prefer descriptiveness, then brevity.
+Prefer descriptiveness, then brevity. Strive for clarity; avoid ambiguity.
 
-When creating APIs with hooks for certain events, prefix names with "on". e.g.,
-`onComplete`, `onFail`.
-
-When talking about millisecond values since the Unix epoch, suffix names with
-"time". e.g., `startTime = Date.now()`.
-
-When naming predicate values or functions, prefix names with "is". e.g.,
-`isReady`, `isAvailable()`.
-
-Functions which return objects shoud be prefixed with "make". e.g.,
-`makeMammal()`, `makeCat()`.
+Functions are verbs, everything else should be nouns.
 
 # Syntax
 
