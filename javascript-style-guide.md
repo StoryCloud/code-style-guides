@@ -150,8 +150,8 @@ var myCat = makeCat({name: 'Henrietta'});
 In JavaScript, the values `false`, `undefined`, `null` and `NaN` are falsy, but
 so are `''` and `0`. This is unfortunate, because sometimes empty strings and
 zero are "valid" values from a business perspective. Therefore, when checking
-for the "existence" of a value, it is unreliable to rely on truthiness or
-falsiness. Instead, you should explicitly check for bottom values.
+for the "existence" of a value, it is better to be explicit than to rely on
+truthiness or falsiness.
 
 Do:
 
@@ -159,6 +159,9 @@ Do:
 var number = value === undefined ? 100 : value;
 if (number !== undefined) {
     // ...
+}
+if (string.length > 0) {
+    // Is it clear that we want non-empty strings.
 }
 ```
 
@@ -168,6 +171,10 @@ Don't:
 var number = value || 100; // Excludes 0.
 if (number) {
     // Won't execute if the value is 0.
+}
+if (string) {
+    // It's unclear whether the author wanted to check for existence or for
+    // empty strings.
 }
 ```
 
@@ -191,7 +198,7 @@ value = array[index++];
 
 ### Abstraction
 
-Abstract away complex or roundabout routines to make your intent obvious.
+Abstract away complex routines to make your intentions obvious.
 
 For instance, some people use the value returned from `indexOf` to test for the
 existence of substrings or elements. But it would be better to abstract that
