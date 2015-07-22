@@ -171,7 +171,7 @@ Prefer `forEach`, `map`, `filter` and `reduce` over `for` loops.
 
 Prefer `every` and `some` over `continue` and `break`.
 
-Prefer iterating through own properties over `for in` loops.
+Prefer `Object.keys(object).forEach` or a `forOwn` function over `for in` loops.
 
 Because tail calls are not yet widely implemented, use `while` and `do` for
 algorithms that might grow the call stack boundlessly.
