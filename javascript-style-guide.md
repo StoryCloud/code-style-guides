@@ -2,16 +2,7 @@
 
 The following document outlines a style guide for JavaScript programs.
 
-# Prelude
-
-StoryCloud's JavaScript Style Guide extends Douglas Crockford's
-[Code Conventions for the JavaScript Programming Language][]. Everything in that
-style guide also applies to this style guide. Please familiarize yourself with
-it.
-
-[Code Conventions for the JavaScript Programming Language]: http://javascript.crockford.com/code.html
-
-## Common Courtesy
+## General principles
 
 - Prefer ECMAScript 5.
   - We don't support ECMAScript 3-only browsers, so constructs like `typeof
@@ -28,16 +19,22 @@ it.
 
 # Formatting
 
+Configure your text editor to manage the following whitespace rules:
+
 - Strip trailing whitespace.
 - Use Unix linefeeds (LF).
 - End files with a newline.
 
-Most text editors can be configured to format whitespace. Please do this to
-avoid whitespace-oriented commits and diffs.
+This helps to avoid whitespace-oriented commits and diffs. Installing an
+[editorconfig plugin][] is one easy way of enabling these rules.
 
-Use JSCS to validate the format of your code. Your editor may offer JSCS
-integration, which you may find useful if you are not familiar with the style
-guide. You can also use our projects' Grunt or Gulp interfaces.
+Use JSCS to validate the format of your code. Our formatting rules derive from
+[Code Conventions for the JavaScript Programming Language][]. Your editor may
+offer JSCS integration, which you may find useful if you are not familiar with
+the style guide. You can also use our projects' Grunt or Gulp interfaces.
+
+[Code Conventions for the JavaScript Programming Language]: http://javascript.crockford.com/code.html
+[Editorconfig]: http://editorconfig.org/#download
 
 # English
 
