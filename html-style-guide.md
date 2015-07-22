@@ -43,7 +43,8 @@ Aligned:
 
 # Identification
 
-- Use `class` for identifying elements. Don't use `id`.
+- Prefer `class` for identifying elements that need to be selected for styling
+  or queried via JavaScript.
 
 # Reducing markup
 
