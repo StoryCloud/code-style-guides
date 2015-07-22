@@ -9,7 +9,7 @@ The following document outlines a style guide for JavaScript programs.
     variable === 'undefined'` can be replaced with `variable === undefined`, et
     al.
   - Open-source code should use ECMAScript 5, as distributed programs should not
-    require exotic flags.
+    require flags.
   - Our Node.js servers utilize some ECMAScript 6 features. Feel free to use
     those features in that environment, if the code is unlikely to be ported
     elsewhere.
@@ -34,7 +34,7 @@ offer JSCS integration, which you may find useful if you are not familiar with
 the style guide. You can also use our projects' Grunt or Gulp interfaces.
 
 [Code Conventions for the JavaScript Programming Language]: http://javascript.crockford.com/code.html
-[Editorconfig]: http://editorconfig.org/#download
+[editorconfig plugin]: http://editorconfig.org/#download
 
 ## English
 
