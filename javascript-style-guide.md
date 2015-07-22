@@ -299,7 +299,7 @@ Don't:
 if (array.indexOf('value') > -1) {
     // ...
 }
-if (parseInt(value, 10) !== NaN) {
+if (!isNaN(parseInt(value, 10))) {
     // ...
 }
 ```
