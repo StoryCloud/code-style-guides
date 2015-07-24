@@ -2,124 +2,76 @@
 
 The following document outlines a style guide for JavaScript programs.
 
-# Prelude
+## General principles
 
-StoryCloud's JavaScript Style Guide extends Douglas Crockford's
-[Code Conventions for the JavaScript Programming Language](http://javascript.crockford.com/code.html). Everything
-in that style guide also applies to this style guide. Please familiarize
-yourself with it.
-
-## Common Courtesy
-
-- Use ECMAScript 5.
+- Prefer ECMAScript 5.
   - We don't support ECMAScript 3-only browsers, so constructs like `typeof
     variable === 'undefined'` can be replaced with `variable === undefined`, et
     al.
-  - ECMAScript 6 is not yet standardized. While many browsers and runtimes have
-    already implemented some proposed features, it would be unwise to use them,
-    because their behavior could change. Platform portability, compatibility
-    with existing tools, incomplete implementation, and lack of thorough
-    analysis of the value or harm of new features are also concerns.
-- Place `'use strict';` at the top of functions.
+  - Open-source code should use ECMAScript 5, as distributed programs should not
+    require flags.
+  - Our Node.js servers utilize some ECMAScript 6 features. Feel free to use
+    those features in that environment, if the code is unlikely to be ported
+    elsewhere.
+- Place `'use strict';` at the top of scripts or functions.
 - Don't be tricky.
+- Do be explicit.
 
-# Formatting
+## Formatting
+
+Configure your text editor to manage the following whitespace rules:
 
 - Strip trailing whitespace.
 - Use Unix linefeeds (LF).
 - End files with a newline.
 
-Most text editors can be configured to format whitespace. Please do this to
-avoid whitespace-oriented commits and diffs.
+This helps to avoid whitespace-oriented commits and diffs. Installing an
+[editorconfig plugin][] is one easy way of enabling these rules.
 
-Use JSCS to validate the format of your code. Your editor may offer JSCS
-integration, which you may find useful if you are not familiar with the style
-guide. You can also use our projects' Grunt interface.
+Use JSCS to validate the format of your code. Our formatting rules derive from
+[Code Conventions for the JavaScript Programming Language][]. Your editor may
+offer JSCS integration, which you may find useful if you are not familiar with
+the style guide. You can also use our projects' Grunt or Gulp interfaces.
 
-# Grammar
+[Code Conventions for the JavaScript Programming Language]: http://javascript.crockford.com/code.html
+[editorconfig plugin]: http://editorconfig.org/#download
 
-## Use real words for identifiers.
+## English
 
-"element" is best written as "element", not "el", "elm", "elem", or "e".
+### Spelling
+
+Use real words for identifiers.
+
+For instance, "element" is best written as "element", not "el", "elm", "elem",
+or "e".
 
 Ubiquitous acronyms such as "http" and "url" are permissible.
 
-## Capitalize only the first letter of words in identifiers.
+### Capitalization
 
-A phrase such as "File Transfer URI", which contains a normally-capitalized
-acronym, has the identifier `fileTransferUri` (as opposed to something like
-`fileTransferURI`).
+Capitalize only the first letter of words in identifiers.
 
-# Syntax
+For instance, a phrase such as "File Transfer URI", which contains a
+normally-capitalized acronym, has the identifier `fileTransferUri` (as opposed
+to something like `fileTransferURI`).
 
-## Functions
+### Word choice
 
-Use [function expressions][]. Do not use [function declarations][].
+Prefer descriptiveness, then brevity. Strive for clarity; avoid ambiguity.
 
-[function expressions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function
-[function declarations]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function
+Functions are verbs, everything else should be nouns.
 
-Do:
+## Syntax
 
-```js
-var procedure = function () {
-    // Function body...
-};
-```
+### Variables
 
-Don't:
+If ECMAScript 6 features are available, prefer `const`. Use `let` only when the
+value needs to change.
 
-```js
-function procedure() {
-    // Function body...
-}
-```
+`const` and `let` variables should be defined separately, and close to their
+site of first use. `var` statements should be placed at the top of a function.
 
-Function expressions are more versatile than function declarations. Also, when
-written alongside immediately-invoked function expressions which return
-functions, the form is more consistent:
-
-```js
-var procedure0 = function () {
-        // Function body...
-    },
-    procedure1 = (function () {
-        return function () {
-            // Function body...
-        };
-    }());
-```
-
-Like `var` statements, function declarations also "hoist" a variable in the
-enclosing function's scope, which can result in errors not obvious to the
-talented, casual observer. Just as we define all variables at the top of a
-function to clarify their scope (and as declared functions *also* define
-variables), we also define all nested functions at the top of the function.
-
-## Strings
-
-Use single quotes (`'`) for string literals.
-
-Use string concatenation. Do not use "multiline strings".
-
-Do:
-
-```js
-var a = 'The quick brown fox ' +
-        'jumps over the lazy dog';
-```
-
-Don't:
-
-```js
-var a = 'The quick brown fox \
-jumps over the lazy dog.'
-```
-
-Multiline strings are harmful because a trailing space following the escaping
-`\` will result in a syntax error invisible to the human eye.
-
-# Quality
+## Quality
 
 Use JSHint to validate the quality of your code and check for errors.
 
@@ -127,15 +79,15 @@ It is highly recommended that you integrate JSHint into your editor, or switch
 to an editor that offers integration. Real-time error reporting can make you
 more productive by pointing out syntactic and logical errors before runtime.
 
-# Style
+## Style
 
-## Leverage the functional programming paradigm.
+### Functionalism
 
-Prefer `forEach`, `map`, `filter` and `reduce` from `Array.prototype` over `for` loops.
+Prefer `forEach`, `map`, `filter` and `reduce` over `for` loops.
 
-Prefer `every` and `some` from `Array.prototype` over `continue` and `break`.
+Prefer `every` and `some` over `continue` and `break`.
 
-Prefer `Object.keys(object).forEach` over `for in` loops.
+Prefer `Object.keys(object).forEach` or a `forOwn` function over `for in` loops.
 
 Because tail calls are not yet widely implemented, use `while` and `do` for
 algorithms that might grow the call stack boundlessly.
@@ -143,7 +95,139 @@ algorithms that might grow the call stack boundlessly.
 Aggregate operations provide forms for iterating over collections that are more
 precise and oftentimes more useful than their procedural alternatives.
 
-# Credits
+### Object-orientation
+
+You can leverage object-oriented design patterns such as encapsulation,
+composition, and inheritance in JavaScript. Create functions whose instance
+variables represent private and protected members. From these functions, return
+objects with methods to access and possibly manipulate the instance
+variables. Create functions with extended interfaces that mutate instances of
+their parents to effect inheritance.
+
+Example:
+
+```js
+var makeMammal = function (data) {
+    var self = {};
+    self.getName = function () {
+        return data.name;
+    };
+    self.says = function () {
+        return data.saying === undefined ? '' : data.saying;
+    };
+    return self;
+};
+
+var myMammal = makeMammal({name: 'Herb'});
+
+var makeCat = function (data) {
+    var self;
+    data.saying = data.saying === undefined ? 'meow' : data.saying;
+    self = makeMammal(data);
+    self.purr = function (n) {
+        var message = '',
+            index;
+        for (index = 0; index < n; index += 1) {
+            if (message.length > 0) {
+                message += '-';
+            }
+            message += 'r';
+        }
+        return message;
+    };
+    self.getName = function () {
+        return self.says() + ' ' + data.name +
+            ' ' + self.says();
+    };
+    return self;
+};
+
+var myCat = makeCat({name: 'Henrietta'});
+```
+
+### Existence
+
+In JavaScript, the values `false`, `undefined`, `null` and `NaN` are falsy, but
+so are `''` and `0`. This is unfortunate, because sometimes empty strings and
+zero are "valid" values from a business perspective. Therefore, when checking
+for the "existence" of a value, it is better to be explicit than to rely on
+truthiness or falsiness.
+
+Do:
+
+```js
+var number = value === undefined ? 100 : value;
+if (number !== undefined) {
+    // ...
+}
+if (string.length > 0) {
+    // Is it clear that we want non-empty strings.
+}
+```
+
+Don't:
+
+```js
+var number = value || 100; // Excludes 0.
+if (number) {
+    // Won't execute if the value is 0.
+}
+if (string) {
+    // It's unclear whether the author wanted to check for existence or for
+    // empty strings.
+}
+```
+
+### Simplicity
+
+It's possible to do lots of things on one line. But that can make your code
+complex and confusing. You should try to do just one thing per line.
+
+Do:
+
+```js
+value = array[index];
+index += 1;
+```
+
+Don't:
+
+```js
+value = array[index++];
+```
+
+### Abstraction
+
+Abstract away complex routines to make your intentions obvious.
+
+For instance, some people use the value returned from `indexOf` to test for the
+existence of substrings or elements. But it would be better to abstract that
+implication into a `contains` function, as you probably care about existence,
+not indices.
+
+Do:
+
+```js
+if (contains(array, 'value')) {
+    // ...
+}
+if (isInteger(value)) {
+    // ...
+}
+```
+
+Don't:
+
+```js
+if (array.indexOf('value') > -1) {
+    // ...
+}
+if (!isNaN(parseInt(value, 10))) {
+    // ...
+}
+```
+
+## Credits
 
 Influenced by:
 
